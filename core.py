@@ -26,7 +26,7 @@ class Core:
 
     @staticmethod
     def _clear_previous_lines():
-        print('\033[H\033[J', end='')
+        print('\n' * 50)
 
     @property
     def game_over(self):
@@ -79,15 +79,15 @@ class Core:
         return self._state.attempts
 
     def hangman_visualizer(self, attempts: int) -> str:
-        """Выводит изображение игровой 2D модельки (кек)"""
+        """Возвращает изображение игровой 2D модельки (кек)"""
         return self._visualizer.visualizer[attempts]
 
     def output_of_used_words(self) -> str:
-        """Визуализирует использованные слова"""
+        """Возвращает использованные слова"""
         return ', '.join(sorted(self._state.used_letters))
 
     def visualizer(self) -> str:
-        """Выводит изображение состояния хода"""
+        """Возвращает изображение состояния хода"""
         attempts = self.output_of_attempts()
         visualizer = self.hangman_visualizer(attempts)
         word = self.output_of_used_words()
@@ -99,7 +99,16 @@ class Core:
 
     def make_guess(self, letter: str) -> str:
         """
-                Обрабатывает ход игрока с визуализацией
+                Возвращает состояние игры.
+
+                Выполняет:
+
+                - Валидацию вводимой буквы
+                - Проверку буквы в загаданном слове
+                - Проверку ранее написанной буквы игроком
+                - Возращение сообщения выполненной проверки
+                - Возращение графического изображения
+
         """
         value = self.value_input(letter)
 

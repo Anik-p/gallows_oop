@@ -13,7 +13,7 @@ class Game:
     2) Валидацию водимой буквы в начале и перезапуске игры;
     3) Обработкой и отображением исключений;
     4) Управлением игровым циклом и перезапуском;
-    5) Вывод на экран графического интерфейса (кек);
+    5) Вывод на экран графического интерфейса;
     """
 
     def __init__(self):
@@ -73,7 +73,7 @@ class Game:
                 self._word = title
                 self._instance_core(title)
 
-                print(f"\nИгра началась!")
+
                 return True
             except FileNotFoundError as f:
                 print(f"\n⚠️ {f}")
@@ -91,15 +91,17 @@ class Game:
                 return None
 
     def game_proses(self):
+        print(f"\nИгра началась!\n")
         print(self._core.visualizer())
         while True:
             try:
 
                 self._score.start_move()
                 user_input = input("\nВведите букву: ")
-                value = self._core.make_guess(user_input)
+                visualizer = self._core.make_guess(user_input)
                 self._score.end_move()
-                print(value)
+                print(visualizer)
+
                 attempts = self._core.output_of_attempts()
                 point = round(self._score.scoring(attempts))
                 final_points = round(self._score.final_points)
@@ -111,14 +113,14 @@ class Game:
 
                     print(f"\n💀 Игра окончена! Вы проиграли!")
                     print(f"💡 Загаданное слово: {''.join(self._word)}")
-                    print(f"Итого: {final_points} очков")
+
                     return True
 
                 elif self._core.game_victory is True:
 
 
                     print(f"\n🎉 Поздравляем! Вы выиграли!")
-                    print(f"Итого: {final_points} очков")
+
                     return True
 
             except ValueError as e:
