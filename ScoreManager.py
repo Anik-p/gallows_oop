@@ -34,7 +34,6 @@ class ScoreManager:
         self.level = level
 
 
-
     def start_move(self):
         """Запускает счетчик времени"""
         self.__start_move = t.perf_counter()

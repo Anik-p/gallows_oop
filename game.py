@@ -4,7 +4,6 @@ import ScoreManager as Score
 from validators.DifficultyValidator import DifficultyValidator
 from validators.RestartValidator import RestartValidator
 
-
 class Game:
     """
     Класс, управляющий игровым процессом

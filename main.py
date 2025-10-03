@@ -25,7 +25,6 @@ class StartGame:
     def _final_conclusion():
         print("\nСпасибо за игру!")
 
-
     def main(self):
 
         self._initial_greeting()

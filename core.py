@@ -23,7 +23,6 @@ class Core:
         self._visualizer = hangman_visualizer.HangmanVisualizer()
 
 
-
     @staticmethod
     def _clear_previous_lines():
         print('\n' * 50)
